@@ -26,10 +26,10 @@ for line in file:
 		idList.insert(idListIndex,matchObj.group(2))
 		print("Element: "+str(idList[idListIndex])+" Index: "+str(idListIndex))
 		idListIndex=idListIndex+1
-	
-	
-	
+
 	
 print("\nFile summary:"
 "\nThere were "+str(lineNumber)+" lines in this file."
 "\nThere were "+str(idListIndex)+" IDs extracted from this file.")
+
+# Test update to GitHub
