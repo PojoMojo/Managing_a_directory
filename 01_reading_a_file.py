@@ -2,9 +2,18 @@
 
 # Script written by John
 # This script is intended to help manage dictionary files by looking for duplicate 'ID's
+# The script can: read a file, identify IDs, identify duplicate ID's and the line they are on, provide a summary
+# Next steps:
+# 1) allow the user to remove the duplicates/duplicate sections (inc progress indicator for large files and report)
+# 2) perform other formatting checks on the file
+#
+
+from shutil import copyfile         # Used for backup
+import os                           # User for filename and ext
+import re                           # Used for regex
+import time                         # User for time/stamping
 
 
-import re
 
 idExtracted = 0                     # Number of IDs identified
 idListIndex = 0                     # Number of unique IDs
@@ -16,8 +25,17 @@ idList = []                         # List of ID/Line/Count of dupes
 dupeIdList = []                     # List of duplicates/line references
 dupeLineIdList = []                 # List of duplicates/line references
 
+source = "C:\\Documents\\London Job\\Training\\Python\\ReadingAFile\\TestFile.txt"
 
-file = open("C:\\Documents\\London Job\\Training\\Python\\ReadingAFile\\TestFile.txt", "r")
+# Making a backup, just in case...
+basename = os.path.basename(source)
+filename, file_extension = os.path.splitext(basename)
+backupFilename = filename+"-Backup-"+time.strftime("%Y%m%d-%H%M%S")+file_extension
+backupFile = "C:\\Documents\\London Job\\Training\\Python\\ReadingAFile\\"+backupFilename
+copyfile(source, backupFile)
+
+
+file = open(source, "r")            # Load the file
 
 # For each row of the file...
 for line in file:
