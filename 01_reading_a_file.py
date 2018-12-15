@@ -1,15 +1,20 @@
 #!/usr/bin/python
+
+# Script written by John
+# This script is intended to help manage dictionary files by looking for duplicate 'ID's
+
+
 import re
 
-idExtracted = 0             # Number of IDs identified
-idListIndex = 0             # Number of unique IDs
-dupeIdListIndex = 0             # Number of duplicate IDs
-lineNumber = 0             # Number of total rows
-loadedFile = []             # This is the file, loaded line by line
+idExtracted = 0                     # Number of IDs identified
+idListIndex = 0                     # Number of unique IDs
+dupeIdListIndex = 0                 # Number of duplicate IDs
+lineNumber = 0                      # Number of total rows
 
-idList = []                 # List of ID/Line/Count of dupes
-dupeIdList = []       # List of duplicates/line references
-dupeLineIdList = []       # List of duplicates/line references
+loadedFile = []                     # This is the file, loaded line by line
+idList = []                         # List of ID/Line/Count of dupes
+dupeIdList = []                     # List of duplicates/line references
+dupeLineIdList = []                 # List of duplicates/line references
 
 
 file = open("C:\\Documents\\London Job\\Training\\Python\\ReadingAFile\\TestFile.txt", "r")
@@ -53,7 +58,7 @@ for line in file:
 print("\nFile summary:"
       "\nThere were " + str(lineNumber) + " lines in this file."
       "\nThere were " + str(idExtracted) + " IDs in this file."                                    
-      "\nThere were " + str(idExtracted-idListIndex) + " unique IDs extracted from this file.\n")
+      "\nThere were " + str(idExtracted-idListIndex) + " duplicate IDs extracted from this file.")
 
 if dupeIdListIndex>0:
     print("\nThe following ID's were found to be duplicates:")
